@@ -8,7 +8,11 @@ from rest_framework.decorators import api_view
 @api_view(['GET'])
 
 def getRiddle(request):
-    riddle = {'message': 'This is a riddle'}
+    riddle = {
+        'location': 'Miami Beach',   
+        'state': 'Florida',
+        'message': 'This is a riddle'  
+        }
     return Response (riddle)
 
 @api_view(['GET'])
