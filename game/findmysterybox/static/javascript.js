@@ -68,8 +68,4 @@ getRiddle()
 //setTimeout(getQuote, 20000);
 setTimeout(getQuote, 0);
 
-
-
-
-
 //console.log("Hello, world!");
