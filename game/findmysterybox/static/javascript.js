@@ -1,31 +1,55 @@
+var endGame = false;
+
 $(document).ready(function(){
     $('#exampleModal').modal('show');
 
     $('#modalButton').click(function(){
         $('#exampleModal2').modal('show');
     });
-
+    /*
     $('#modalButton2').click(function(){
         $('#exampleModal3').modal('show');
     });
-
+    */
     $('#modalButton3').click(function(){
         $('#exampleModal4').modal('show');
     });
+
+    $('#modalButton3').click(function(){
+        if (endGame){
+            location.reload();
+        }
+    });
+    
 });
+var selectedState = 'Florida';
 
 async function getRiddle() {
     let response = await fetch('/riddle');
     let data = await response.json();
 
-    var location = data.location
-    var state = data.state
-    var riddle = data.message
+    var location = data.location;
+    var state = data.state;
+    var riddle = data.riddle;
     $('#modalText2').text(riddle);
 
 
     $('#location').text(location);
     $('#state').text(state);
+
+    $('#CheckButton').click(function(){
+        $('#exampleModalLabel3').text('Wrong 🥺🥺');
+        $('#state').text(state);
+        $('#modalButton3').text('Play again');
+        endGame = true;
+        if(selectedState == state){
+            $('#exampleModalLabel3').text('Correct! 🥳🥳');
+            $('#modalButton3').text('Open the mystery box');
+            endGame = false;
+        }
+        $('#exampleModal3').modal('show');
+        //console.log(selectedState)
+    });
     
     //console.log(data); // This will log the JSON object to your console
 }
@@ -40,8 +64,9 @@ async function getQuote() {
     //console.log(data); // This will log the JSON object to your console
 }
 
-setTimeout(getRiddle, 2000);
-setTimeout(getQuote, 12000);
+getRiddle()
+//setTimeout(getQuote, 20000);
+setTimeout(getQuote, 0);
 
 
 

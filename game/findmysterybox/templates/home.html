@@ -2,6 +2,7 @@
 {% block content %}
 
 <button id="Button1" name="Button1" type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#exampleModal2">Show riddle</button>
+<button id="CheckButton" name="CheckButton" type="button" class="btn btn-primary mx-auto">Check state</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -33,8 +34,8 @@
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div id="modalText2" name="modalText2" class="modal-body">
-            Wait for the riddle...
+        <div class="modal-body">
+            <a id="modalText2" name="modalText2">Wait for the riddle...</a>
         </div>
         <div class="modal-footer">
             <button id="modalButton2" name="modalButton2" type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#exampleModal2">Guess the state</button>
@@ -74,10 +75,10 @@
             </button>
         </div>
         <div class="modal-body">
-            You open the mystery box and find... a fortune cookie!! with a really wise message: <br> <br> <em><strong><p id="modalText4" name="modalText4"></p></strong></em> I hope you enjoyed the cookie and the wise message!
+            You open the mystery box and find... a fortune cookie!! with a really wise message: <br> <br> <em><strong><p id="modalText4" name="modalText4">Wait for the message...</p></strong></em> I hope you enjoyed the cookie and the wise message!
         </div>
         <div class="modal-footer">
-            <button id="modalButton2" name="modalButton2" type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#exampleModal4">Play again</button>
+            <button onclick="location.reload()" id="modalButton4" name="modalButton4" type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#exampleModal4">Play again</button>
         </div>
         </div>
     </div>
