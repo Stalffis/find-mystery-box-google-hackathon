@@ -72,6 +72,7 @@ with open("./findmysterybox/states.json", "r") as f:
 
 convo = model.start_chat(history=[
 ])
+#We request to GeminiAPI the place using the state and the riddle based in that location and state
 @api_view(['GET'])
 
 def getRiddle(request):
@@ -92,6 +93,16 @@ def getRiddle(request):
         'riddle': riddle
         }
     return Response(riddle)
+
+@api_view(['GET'])
+
+def getQuote(request):
+    messageQuote = "You are an expert creating fortune cookie messages. Your job is to generate a fortune cookie message, full of wisdom and without emoticons"
+    convo.send_message(messageQuote)
+    quote = convo.last.text
+    time.sleep(10)
+    quote = {'message': quote}
+    return Response (quote)
 
 
 def home(request):
