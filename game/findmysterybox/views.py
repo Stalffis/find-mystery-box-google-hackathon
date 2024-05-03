@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.views import View
 from dotenv import load_dotenv
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -32,6 +33,7 @@ def getQuote(request):
 load_dotenv()
 
 api_key_env = os.getenv('API_KEY')
+api_key_maps = os.getenv('API_KEY_MAPS')
 
 genai.configure(api_key=api_key_env)
 
@@ -106,5 +108,9 @@ def getQuote(request):
 
 
 def home(request):
-    return render(request, "home.html")
+    key = api_key_maps
+    context = {
+        "key": key 
+    }
+    return render(request, "home.html", context)
 

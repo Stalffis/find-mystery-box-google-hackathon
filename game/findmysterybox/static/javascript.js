@@ -43,8 +43,4 @@ async function getQuote() {
 setTimeout(getRiddle, 2000);
 setTimeout(getQuote, 12000);
 
-
-
-
-
 //console.log("Hello, world!");
