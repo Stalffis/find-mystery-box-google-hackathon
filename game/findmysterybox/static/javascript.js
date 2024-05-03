@@ -29,8 +29,6 @@ async function getRiddle() {
     
     //console.log(data); // This will log the JSON object to your console
 }
-getRiddle();
-
 
 async function getQuote() {
     let response = await fetch('/quote');
@@ -41,7 +39,9 @@ async function getQuote() {
     
     //console.log(data); // This will log the JSON object to your console
 }
-getQuote();
+
+setTimeout(getRiddle, 2000);
+setTimeout(getQuote, 12000);
 
 
 
