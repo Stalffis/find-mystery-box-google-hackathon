@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import google.generativeai as genai
+import os
+import time
+import json
+import random
+from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,6 +28,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-zimgz*h#9w3)ci$3&%^25&u@4_#f)n6y$xkf_=enf^0hg#s5nh'
+
+# Load environment variables from .env file
+load_dotenv()
+
+api_key_env = os.getenv('API_KEY')
+
+genai.configure(api_key=api_key_env)
+
+API_KEY=os.getenv('API_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

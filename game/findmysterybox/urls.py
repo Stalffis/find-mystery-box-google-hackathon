@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
     path('riddle', views.getRiddle), 
-    path('quote', views.getQuote)
+   # path('quote', views.getQuote)
 
 ]
