@@ -74,7 +74,7 @@ time.sleep(5)
 #We request the fortune cookie message
 message = "You are an expert creating fortune cookie messages. Your job is to generate a fortune cookie message, full of wisdom and without emoticons"
 convo.send_message(message)
-cookieMessage = convo.last.text
+quoteMessage = convo.last.text
 print(convo.last.text)
 
 time.sleep(10)
