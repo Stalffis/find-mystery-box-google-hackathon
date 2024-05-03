@@ -47,10 +47,16 @@
         
               marker.setPosition(results[0].geometry.location);
               marker.setMap(map);
-
-
-              console.log(results)
-              return results;
+              console.log('Aqui hay un array', results)
+              const size = results.length;
+              if (size>=2){
+                guessState = results[size-2];
+                console.log(guessState.formatted_address);
+                return guessState;
+              }
+              else{
+                return e;
+              }
             })
             .catch((e) => {
               alert("Geocode was not successful for the following reason: " + e);
@@ -69,7 +75,11 @@
         geocoder
           .geocode({ location: latlng })
           .then((response) => {
-            if (response.results[0]) {
+
+            console.log(size);
+            if (response.results[0]){
+              
+              console.log("existe array");
               //map.setZoom(11);
               /*
               const marker = new google.maps.Marker({
