@@ -36,21 +36,6 @@ async function getRiddle() {
 
     $('#location').text(location);
     $('#state').text(state);
-
-    $('#CheckButton').click(function(){
-        $('#exampleModalLabel3').text('Wrong 🥺🥺');
-        $('#state').text(state);
-        $('#modalButton3').text('Play again');
-        endGame = true;
-        if(selectedState == state){
-            $('#exampleModalLabel3').text('Correct! 🥳🥳');
-            $('#modalButton3').text('Open the mystery box');
-            endGame = false;
-        }
-        $('#exampleModal3').modal('show');
-        //console.log(selectedState)
-    });
-    
     //console.log(data); // This will log the JSON object to your console
 }
 
@@ -63,6 +48,23 @@ async function getQuote() {
     
     //console.log(data); // This will log the JSON object to your console
 }
+
+function compareState(guessState){
+
+    console.log(guessState);
+    $('#exampleModalLabel3').text('Wrong 🥺🥺');
+    $('#state').text(state);
+    $('#modalButton3').text('Play again');
+    endGame = true;
+    if(guessState == state){
+        $('#exampleModalLabel3').text('Correct! 🥳🥳');
+        $('#modalButton3').text('Open the mystery box');
+        endGame = false;
+    }
+    $('#exampleModal3').modal('show');
+
+}
+
 
 getRiddle()
 //setTimeout(getQuote, 20000);

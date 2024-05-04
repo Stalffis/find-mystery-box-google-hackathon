@@ -32,12 +32,8 @@
           var json = mapsMouseEvent.latLng.toJSON()
           var text = json.lat + ', ' + json.lng;
 
-
-          geocodeLatLng(geocoder, map, text);
-
-          console.log(text)
-
         });
+      }
         
         function geocode(request) {
           geocoder
@@ -47,45 +43,20 @@
         
               marker.setPosition(results[0].geometry.location);
               marker.setMap(map);
-
-
-              console.log(results)
-              return results;
+              console.log('Aqui hay un array', results)
+              const size = results.length;
+              if (size>=2){
+                guessState = results[size-2];
+              }
+              guessState = guessState.formatted_address.split(",");
+              guessState = guessState[0]
+              console.log(guessState)
             })
             .catch((e) => {
               alert("Geocode was not successful for the following reason: " + e);
             });
         }
-      }
-
-      function geocodeLatLng(geocoder, map, text) {
-        const input = text;
-        const latlngStr = input.split(",", 2);
-        const latlng = {
-          lat: parseFloat(latlngStr[0]),
-          lng: parseFloat(latlngStr[1]),
-        };
-      
-        geocoder
-          .geocode({ location: latlng })
-          .then((response) => {
-            if (response.results[0]) {
-              //map.setZoom(11);
-              /*
-              const marker = new google.maps.Marker({
-                position: latlng,
-                map: map,
-              });
-              */
-              console.log(response.results[0].formatted_address)
-              //infowindow.setContent(response.results[0].formatted_address);
-              //infowindow.open(map, marker);
-            } else {
-              window.alert("No results found");
-            }
-          })
-          .catch((e) => window.alert("Geocoder failed due to: " + e));
-      }
+  
 
     window.initMap = initMap
 
