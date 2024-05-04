@@ -1,8 +1,5 @@
-.mapholder{
-    height: 900px;
-    width: 100%;
-}
-
-#map{
-    height: 100%;
+#Button1{
+    position: fixed; /* This will make them sticky */
+    top: 60px; /* Position the buttons at the bottom of the page */
+    z-index: 999; /* This will ensure that these buttons are always on top */
 }

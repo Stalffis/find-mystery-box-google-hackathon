@@ -1,8 +1,10 @@
 {% extends "base.html" %} {% block title %} Home Page {% endblock %}
 {% block content %}
 
-<button id="Button1" name="Button1" type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#exampleModal2">Show riddle</button>
-<button id="CheckButton" name="CheckButton" type="button" class="btn btn-primary mx-auto">Check state</button>
+<div class="row justify-content-center">
+    <button id="Button1" name="Button1" type="button" class="btn btn-primary btn-dark btn-lg" data-toggle="modal" data-target="#exampleModal2">Show riddle 🧩</button>
+</div>
+<!-- <button id="CheckButton" name="CheckButton" type="button" class="btn btn-primary mx-auto">Check state</button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,9 +88,9 @@
 
 
 
-<div class="linkholder">
-    <div class="mapholder">
-        <div id="map"></div>
+<div class="linkholder" style="height: 100%;">
+    <div class="mapholder" style="height: 100%;">
+        <div id="map" style="height: 100%;"></div>
         <script async
             src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap&v=weekly&region=US"
       ></script>
