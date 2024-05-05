@@ -1,7 +1,7 @@
 var endGame = false;
 var state = null;
-let map;
-let marker;
+var map;
+var marker;
 var GeminiTry = 0;
 
 $(document).ready(function(){
@@ -64,20 +64,31 @@ async function getRiddle() {
     $('#location').text(location);
     $('#state').text(state);
     //console.log(data); // This will log the JSON object to your console
+    GeminiTry = 0
   } catch (error) {
     console.log('There was a problem with your fetch operation (getting the riddle): ' + error.message);
+    GeminiTry++
     setTimeout(getRiddle, 5000);
   }
 }
 
 async function getQuote() {
-    let response = await fetch('/quote');
-    let data = await response.json();
-
-    var quote = data.message
-    $('#modalText4').text(quote);
-    
-    //console.log(data); // This will log the JSON object to your console
+    try {
+        const response = await fetch('/quote');
+        let data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error ${response.status}`);
+        }
+      
+        var quote = data.message
+        $('#modalText4').text(quote);
+        GeminiTry = 0
+      } catch (error) {
+        console.log('There was a problem with your fetch operation (getting the quote): ' + error.message);
+        GeminiTry++
+        setTimeout(getQuote, 5000);
+      }
 }
 
 getRiddle()
