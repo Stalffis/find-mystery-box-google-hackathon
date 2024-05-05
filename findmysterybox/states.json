@@ -32,10 +32,6 @@
         "abbreviation": "DE"
     },
     {
-        "name": "District Of Columbia",
-        "abbreviation": "DC"
-    },
-    {
         "name": "Florida",
         "abbreviation": "FL"
     },
@@ -182,10 +178,6 @@
     {
         "name": "Vermont",
         "abbreviation": "VT"
-    },
-    {
-        "name": "Virgin Islands",
-        "abbreviation": "VI"
     },
     {
         "name": "Virginia",
