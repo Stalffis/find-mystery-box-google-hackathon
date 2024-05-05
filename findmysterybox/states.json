@@ -44,18 +44,6 @@
         "abbreviation": "HI"
     },
     {
-        "name": "Idaho",
-        "abbreviation": "ID"
-    },
-    {
-        "name": "Illinois",
-        "abbreviation": "IL"
-    },
-    {
-        "name": "Indiana",
-        "abbreviation": "IN"
-    },
-    {
         "name": "Iowa",
         "abbreviation": "IA"
     },
@@ -180,10 +168,6 @@
         "abbreviation": "VT"
     },
     {
-        "name": "Virginia",
-        "abbreviation": "VA"
-    },
-    {
         "name": "Washington",
         "abbreviation": "WA"
     },
@@ -194,9 +178,5 @@
     {
         "name": "Wisconsin",
         "abbreviation": "WI"
-    },
-    {
-        "name": "Wyoming",
-        "abbreviation": "WY"
     }
 ]
