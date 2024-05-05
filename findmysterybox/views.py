@@ -80,16 +80,16 @@ convo = model.start_chat(history=[
 def getRiddle(request):
     state = data[random.randint(0, len(data) - 1)]['name']
     messageLocation = "Please Gemini, give me the name of only one touristic place in the state of "+state+" in US without emoticons, it can be: Any famous beach, parks, museums, natural parks, historical places, around all United States of America. For example: Times Square, Yellowstone National Park, Miami beach, Grand Canyon, Hollywood boulevard."
-    convo.send_message(messageLocation)
-    place = convo.last.text
-    #place = 'The Kennedy Space Center'
+    #convo.send_message(messageLocation)
+    #place = convo.last.text
+    place = 'The Kennedy Space Center'
 
     time.sleep(5)
     #time.sleep(1)
-    messageRiddle = "You are an expert creating riddlers. Your job is to generate a riddle, without the answer, for a game using these two parameters: 1. Place: "+place+", 2. State: "+state+". The idea is that the user have to guess the place with the riddle that you provide so you can't use in the riddle the exact parameters provided, you can use synonymous. For example: I rise and fall with the lake's gentle breath, A sandy expanse where the wind finds its path. Sculpted by nature, a playground so vast, With whispering dunes that forever will last. Where am I?"
-    convo.send_message(messageRiddle)
-    riddle = convo.last.text
-    #riddle = 'Where rockets roar and dreams take flight, A gateway to the stars, shining bright. History whispers of giants who soared, Leaving footprints on the moon, forever adored.  '
+    messageRiddle = "You are an expert creating riddles. Your job is to generate a riddle, without the answer, for a game using these two parameters: 1. Place: "+place+", 2. State: "+state+". The idea is that the user have to guess the place with the riddle that you provide so you can't use in the riddle the exact parameters provided, you can use synonymous. For example: I rise and fall with the lake's gentle breath, A sandy expanse where the wind finds its path. Sculpted by nature, a playground so vast, With whispering dunes that forever will last. Where am I?"
+    #convo.send_message(messageRiddle)
+    #riddle = convo.last.text
+    riddle = 'Where rockets roar and dreams take flight, A gateway to the stars, shining bright. History whispers of giants who soared, Leaving footprints on the moon, forever adored. Where am I?'
 
     riddle = { 
         'location': place, 
@@ -102,9 +102,9 @@ def getRiddle(request):
 
 def getQuote(request):
     messageQuote = "You are an expert creating fortune cookie messages. Your job is to generate a fortune cookie message, full of wisdom and without emoticons"
-    convo.send_message(messageQuote)
-    quote = convo.last.text
-    #quote = '“The journey of a thousand miles begins with a single, courageous step.”'
+    #convo.send_message(messageQuote)
+    #quote = convo.last.text
+    quote = '“The journey of a thousand miles begins with a single, courageous step.”'
     quote = {'message': quote}
     return Response (quote)
 

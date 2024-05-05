@@ -2,6 +2,7 @@ var endGame = false;
 var state = null;
 let map;
 let marker;
+var GeminiTry = 0;
 
 $(document).ready(function(){
     $('#exampleModal').modal('show');
@@ -42,22 +43,31 @@ $('#modalButton3').click(function(){
         location.reload();
     }
 });
-
 async function getRiddle() {
-    let response = await fetch('/riddle');
-    let data = await response.json();
-
+  try {
+    const response = await fetch('/riddle');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status}`);
+    }
+  
+    const data = await response.json();
     var location = data.location;
     state = data.state;
     console.log(state)
     var riddle = data.riddle;
-    $('#modalText2').text(riddle);
-    $('#modalText2final').text("Where am I?");
+    riddle = riddle.slice(0, riddle.length - 12);
 
+    $('#modalText2').text('"'+riddle+'"');
+    $('#modalText2final').text("Where am I?");
 
     $('#location').text(location);
     $('#state').text(state);
     //console.log(data); // This will log the JSON object to your console
+  } catch (error) {
+    console.log('There was a problem with your fetch operation (getting the riddle): ' + error.message);
+    setTimeout(getRiddle, 5000);
+  }
 }
 
 async function getQuote() {
@@ -69,6 +79,7 @@ async function getQuote() {
     
     //console.log(data); // This will log the JSON object to your console
 }
+
 getRiddle()
 setTimeout(getQuote, 10000);
 //setTimeout(getQuote, 0);
@@ -88,9 +99,6 @@ function compareState(guessState, state){
     $('#exampleModal3').modal('show');
 
 }
-
-
-
 
 function geocode(request) {
     geocoder
