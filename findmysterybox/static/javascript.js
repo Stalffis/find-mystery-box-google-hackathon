@@ -112,11 +112,12 @@ async function getRiddle() {
 async function getQuote() {
     try {
         const response = await fetch('/quote');
-        let data = await response.json();
         
         if (!response.ok) {
           throw new Error(`HTTP error ${response.status}`);
         }
+
+        let data = await response.json();
       
         var quote = data.message
         $('#modalText4').text(quote);
