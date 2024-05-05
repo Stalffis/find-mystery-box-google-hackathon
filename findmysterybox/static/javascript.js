@@ -75,14 +75,15 @@ async function getRiddle() {
 async function getQuote() {
     try {
         const response = await fetch('/quote');
-        let data = await response.json();
-        
+
         if (!response.ok) {
-          throw new Error(`HTTP error ${response.status}`);
+            throw new Error(`HTTP error ${response.status}`);
         }
+
+        const data = await response.json();
       
         var quote = data.message
-        $('#modalText4').text(quote);
+        $('#modalText4').text('"'+quote.slice(0, -2)+'"');
         GeminiTry = 0
       } catch (error) {
         console.log('There was a problem with your fetch operation (getting the quote): ' + error.message);
