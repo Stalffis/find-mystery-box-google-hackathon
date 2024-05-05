@@ -4,6 +4,30 @@ var map;
 var marker;
 var GeminiTry = 0;
 
+//Handling Error Array
+const handling_error = [
+    {
+      "State": "Florida",
+      "Riddle": "Where rockets kiss the sky, and dreams ignite,\nA place of wonder, bathed in starry night.\nFootprints of giants on moonlit dust reside,\nExploring the cosmos, with science as guide.\n\n",
+      "Place": "Kennedy Space Center Visitor Complex",
+      "Quote": "The journey of a thousand miles begins with a single step, but don't forget to enjoy the scenery along the way."
+    },
+    {
+      "State": "New York",
+      "Riddle": "A green oasis in a city that never sleeps,\nWhere towering giants watch as the world creeps.\nHorse-drawn carriages and boats on the lake,\nA haven for artists, for dreamers to take.\n\n",
+      "Place": "Central Park",
+      "Quote": "Kindness is like a boomerang; it always returns."
+    },
+    {
+      "State": "California",
+      "Riddle": "Granite giants pierce the sky so blue,\nWaterfalls cascade, a breathtaking view.\nSequoia stands tall, with stories untold,\nIn this valley of wonder, where nature unfolds.\n",
+      "Place": "Yosemite National Park",
+      "Quote": "A calm sea never made a skilled sailor; embrace life's challenges."
+    }
+   ]
+   // Get a random index from the array only for handling errors
+    const randomIndex = Math.floor(Math.random() * (handling_error.length-1));
+
 $(document).ready(function(){
     $('#exampleModal').modal('show');
 });
@@ -68,29 +92,47 @@ async function getRiddle() {
   } catch (error) {
     console.log('There was a problem with your fetch operation (getting the riddle): ' + error.message);
     GeminiTry++
-    setTimeout(getRiddle, 5000);
+    if (GeminiTry < 2){
+        setTimeout(getRiddle, 5000);
+    }
+    else{
+        let randomRiddle = handling_error[randomIndex].Riddle;
+        let location = handling_error[randomIndex].Place;
+        state = handling_error[randomIndex].State;
+
+        $('#modalText2').text('"'+randomRiddle+'"');
+        $('#modalText2final').text("Where am I?");
+        $('#location').text(location);
+        $('#state').text(state);
+
+    }
   }
 }
 
 async function getQuote() {
     try {
         const response = await fetch('/quote');
-
+        let data = await response.json();
+        
         if (!response.ok) {
-            throw new Error(`HTTP error ${response.status}`);
+          throw new Error(`HTTP error ${response.status}`);
         }
-
-        const data = await response.json();
       
         var quote = data.message
-        $('#modalText4').text('"'+quote.slice(0, -2)+'"');
-        GeminiTry = 0
+        $('#modalText4').text(quote);
+        GeminiTry = 0;
       } catch (error) {
         console.log('There was a problem with your fetch operation (getting the quote): ' + error.message);
-        GeminiTry++
-        setTimeout(getQuote, 5000);
+        GeminiTry++;
+        if (GeminiTry < 2){
+            setTimeout(getQuote, 5000);
+        }
+        else{
+            let randomQuote = handling_error[randomIndex].Quote;
+            $('#modalText4').text(randomQuote);
+        }
       }
-}
+    }
 
 getRiddle()
 setTimeout(getQuote, 10000);
