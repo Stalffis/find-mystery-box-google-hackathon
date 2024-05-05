@@ -79,14 +79,23 @@ async function getRiddle() {
     var location = data.location;
     state = data.state;
     console.log(state)
-    var riddle = data.riddle;
-    riddle = riddle.slice(0, -13);
+    var riddle = data.riddle.replace(/\n/g, '');
+    riddle = "google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement"
+    riddle = (riddle.endsWith(' ')) ? riddle.slice(0, -1) : riddle; 
+    let cutText = riddle.slice(-10);
+    console.log(cutText)
+    riddle = riddle.slice(0, -10);
 
     $('#modalText2').text('"'+riddle+'"');
     $('#modalText2final').text("Where am I?");
 
     $('#location').text(location);
     $('#state').text(state);
+
+    if(cutText != 'What am I?' && cutText != 'Where am I?'){
+        manualSetRiddleLocationState()
+        //console.log('Termina en otro texto!')
+    }
     //console.log(data); // This will log the JSON object to your console
     GeminiTry = 0
   } catch (error) {
@@ -96,17 +105,20 @@ async function getRiddle() {
         setTimeout(getRiddle, 5000);
     }
     else{
-        let randomRiddle = handling_error[randomIndex].Riddle;
-        let location = handling_error[randomIndex].Place;
-        state = handling_error[randomIndex].State;
-
-        $('#modalText2').text('"'+randomRiddle+'"');
-        $('#modalText2final').text("Where am I?");
-        $('#location').text(location);
-        $('#state').text(state);
-
+        manualSetRiddleLocationState()
     }
   }
+}
+
+function manualSetRiddleLocationState(){
+    let randomRiddle = handling_error[randomIndex].Riddle;
+    let location = handling_error[randomIndex].Place;
+    state = handling_error[randomIndex].State;
+
+    $('#modalText2').text('"'+randomRiddle+'"');
+    $('#modalText2final').text("Where am I?");
+    $('#location').text(location);
+    $('#state').text(state);
 }
 
 async function getQuote() {
@@ -133,7 +145,7 @@ async function getQuote() {
             $('#modalText4').text(randomQuote);
         }
       }
-    }
+}
 
 getRiddle()
 setTimeout(getQuote, 10000);
