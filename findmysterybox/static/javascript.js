@@ -8,19 +8,19 @@ var GeminiTry = 0;
 const handling_error = [
     {
       "State": "Florida",
-      "Riddle": "Where rockets kiss the sky, and dreams ignite,\nA place of wonder, bathed in starry night.\nFootprints of giants on moonlit dust reside,\nExploring the cosmos, with science as guide.\n\n",
+      "Riddle": "Where rockets kiss the sky, and dreams ignite,\nA place of wonder, bathed in starry night.\nFootprints of giants on moonlit dust reside,\nExploring the cosmos, with science as guide.",
       "Place": "Kennedy Space Center Visitor Complex",
       "Quote": "The journey of a thousand miles begins with a single step, but don't forget to enjoy the scenery along the way."
     },
     {
       "State": "New York",
-      "Riddle": "A green oasis in a city that never sleeps,\nWhere towering giants watch as the world creeps.\nHorse-drawn carriages and boats on the lake,\nA haven for artists, for dreamers to take.\n\n",
+      "Riddle": "A green oasis in a city that never sleeps,\nWhere towering giants watch as the world creeps.\nHorse-drawn carriages and boats on the lake,\nA haven for artists, for dreamers to take.",
       "Place": "Central Park",
       "Quote": "Kindness is like a boomerang; it always returns."
     },
     {
       "State": "California",
-      "Riddle": "Granite giants pierce the sky so blue,\nWaterfalls cascade, a breathtaking view.\nSequoia stands tall, with stories untold,\nIn this valley of wonder, where nature unfolds.\n",
+      "Riddle": "Granite giants pierce the sky so blue,\nWaterfalls cascade, a breathtaking view.\nSequoia stands tall, with stories untold,\nIn this valley of wonder, where nature unfolds.",
       "Place": "Yosemite National Park",
       "Quote": "A calm sea never made a skilled sailor; embrace life's challenges."
     }
@@ -80,7 +80,7 @@ async function getRiddle() {
     state = data.state;
     console.log(state)
     var riddle = data.riddle;
-    riddle = riddle.slice(0, riddle.length - 12);
+    riddle = riddle.slice(0, -13);
 
     $('#modalText2').text('"'+riddle+'"');
     $('#modalText2final').text("Where am I?");
