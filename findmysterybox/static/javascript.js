@@ -78,12 +78,11 @@ async function getRiddle() {
     const data = await response.json();
     var location = data.location;
     state = data.state;
-    console.log(state)
+    //console.log(state)
     var riddle = data.riddle.replace(/\n/g, '');
-    riddle = "google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement"
     riddle = (riddle.endsWith(' ')) ? riddle.slice(0, -1) : riddle; 
     let cutText = riddle.slice(-10);
-    console.log(cutText)
+    //console.log(cutText)
     riddle = riddle.slice(0, -10);
 
     $('#modalText2').text('"'+riddle+'"');
@@ -153,7 +152,7 @@ setTimeout(getQuote, 10000);
 
 function compareState(guessState, state){
 
-    console.log(guessState);
+    //console.log(guessState);
     $('#exampleModalLabel3').text('Wrong 🥺🥺');
     $('#state').text(state);
     $('#modalButton3').text('Play again');
