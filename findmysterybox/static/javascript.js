@@ -176,7 +176,7 @@ function geocode(request) {
     marker.setMap(map);
     //console.log('Aqui hay un array', results)
     size = results.length;
-    if (size>=2 && results[size-1].formatted_address == "United States") {
+    if (size>=2 && (results[size-1].formatted_address == "United States" || results[size-1].address_components[0].short_name == "US")) {
         guessState = results[size-2];
         guessState = guessState.formatted_address.split(",");
         guessState = guessState[0]
@@ -184,7 +184,7 @@ function geocode(request) {
         //console.log(guessState)
     }
     else{
-        alert("You are outside the US, the mystery box is not there...😩");
+        alert("You have selected outside the US, the mystery box is not there...😩");
     }
     })
     .catch((e) => {
